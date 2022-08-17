@@ -3,6 +3,7 @@ chromedriver.exe
 roadapikey.txt
 kakaoapikey.txt
 ngrok_auth.txt
+upload/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
