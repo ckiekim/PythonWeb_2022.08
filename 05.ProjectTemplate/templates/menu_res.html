@@ -13,9 +13,8 @@
         <tr class="d-flex">
             <td class="col-2">이미지</td>
             <td class="col-8">
-                <!-- <img src="../static/img/독수리.jpg" class="d-block w-100" alt="입력한 사진"> -->
-                <!-- <img src="{{url_for('static', filename='img/독수리.jpg')}}" class="d-block w-100" alt="입력한 사진"> -->     
-                <img src="{{url_for('static', filename='upload/'+fname)}}" class="d-block w-100" alt="입력한 사진">                         
+                <img src="{{url_for('static', filename='upload/'+fname, q=mtime)}}" 
+                     class="d-block w-100" alt="입력한 사진">                         
             </td>
             <td class="col-2"></td>
         </tr class="d-flex">
