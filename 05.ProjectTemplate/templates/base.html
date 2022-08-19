@@ -27,6 +27,10 @@
                     href="{% if menu.menu %}#{% else %}/menu{% endif %}">
                     <i class="fa-solid fa-bolt"></i> Menu</a>
             <a class="nav-link disabled"></a>
+            <a class="nav-link {% if menu.map %}active{% endif %}" 
+                    href="{% if menu.map %}#{% else %}/map{% endif %}">
+                    <i class="fa-solid fa-earth-asia"></i> 지도 표시</a>
+            <a class="nav-link disabled"></a>
             <a class="nav-link disabled" style="margin-right:50px;">
                 <strong>리뷰 분석을 통한 호텔 카테고리 재분류</strong>
             </a>

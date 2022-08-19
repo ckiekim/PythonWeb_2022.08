@@ -5,12 +5,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    menu = {'home':1, 'menu':0}
+    menu = {'home':1, 'menu':0, 'map':0}
     return render_template('index.html', menu=menu)
 
 @app.route('/menu', methods=['GET','POST'])
 def menu():
-    menu = {'home':0, 'menu':1}
+    menu = {'home':0, 'menu':1, 'map':0}
     if request.method == 'GET':
         languages = [
             {'disp':'영어', 'val':'en'},
@@ -38,6 +38,13 @@ def menu():
         mtime = int(os.stat(filename).st_mtime)
         return render_template('menu_res.html', result=result, menu=menu,
                                 fname=fname, mtime=mtime)
+
+@app.route('/map')
+def map():
+    menu = {'home':0, 'menu':0, 'map':1}
+    filename = os.path.join(app.static_folder, 'img/광주시_주요관공서.html')
+    mtime = int(os.stat(filename).st_mtime)
+    return render_template('map.html', menu=menu, mtime=mtime)
 
 if __name__ == '__main__':
     app.run(debug=True)
