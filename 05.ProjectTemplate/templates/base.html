@@ -18,7 +18,40 @@
         </a>
         
         <!-- Links -->
-        <nav class="nav nav-pills">
+        <ul class="nav nav-pills mr-auto">
+            <li class="nav-item mr-5">
+                <a class="nav-link {% if menu.home %}active{% endif %}" 
+                        href="{% if menu.home %}#{% else %}/{% endif %}">
+                        <i class="fa-solid fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item mr-5">
+                <a class="nav-link {% if menu.menu %}active{% endif %}" 
+                        href="{% if menu.menu %}#{% else %}/menu{% endif %}">
+                        <i class="fa-solid fa-bolt"></i> Menu</a>
+            </li>
+            <li class="nav-item mr-5">
+                <a class="nav-link {% if menu.map %}active{% endif %}" 
+                        href="{% if menu.map %}#{% else %}/map{% endif %}">
+                        <i class="fa-solid fa-earth-asia"></i> 지도 표시</a>
+            </li>
+            <li class="nav-item dropdown mr-5">
+                <a class="nav-link dropdown-toggle {% if menu.extra %}active{% endif %}" href="#" 
+                    id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="far fa-list-alt"></i> 익스트라
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/extra/stream">얼굴 인식(OpenCV)</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/extra/face_mesh">얼굴 메쉬(MediaPipe)</a></li>
+                </ul>
+            </li>
+            <li class="nav-item mr-5">
+                <a class="nav-link disabled" style="margin-right:50px;">
+                    <strong>리뷰 분석을 통한 호텔 카테고리 재분류</strong>
+                </a>
+            </li>
+        </ul>
+        <!-- <nav class="nav nav-pills">
             <a class="nav-link {% if menu.home %}active{% endif %}" 
                     href="{% if menu.home %}#{% else %}/{% endif %}">
                     <i class="fa-solid fa-home"></i> Home</a>
@@ -26,15 +59,13 @@
             <a class="nav-link {% if menu.menu %}active{% endif %}" 
                     href="{% if menu.menu %}#{% else %}/menu{% endif %}">
                     <i class="fa-solid fa-bolt"></i> Menu</a>
-            <a class="nav-link disabled"></a>
             <a class="nav-link {% if menu.map %}active{% endif %}" 
                     href="{% if menu.map %}#{% else %}/map{% endif %}">
                     <i class="fa-solid fa-earth-asia"></i> 지도 표시</a>
-            <a class="nav-link disabled"></a>
             <a class="nav-link disabled" style="margin-right:50px;">
                 <strong>리뷰 분석을 통한 호텔 카테고리 재분류</strong>
             </a>
-        </nav>
+        </nav> -->
     </nav>
     <div class="container" style="margin-top:88px;">
         <div class="row mb-5">

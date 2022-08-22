@@ -1,16 +1,19 @@
 from flask import Flask, render_template, request
+from extra import extra_bp
 import os
 
 app = Flask(__name__)
+app.secret_key = 'qwert12345'   # session, flash 사용하기 위해 설정
+app.register_blueprint(extra_bp, url_prefix='/extra')
 
 @app.route('/')
 def home():
-    menu = {'home':1, 'menu':0, 'map':0}
+    menu = {'home':1, 'menu':0, 'map':0, 'extra':0}
     return render_template('index.html', menu=menu)
 
 @app.route('/menu', methods=['GET','POST'])
 def menu():
-    menu = {'home':0, 'menu':1, 'map':0}
+    menu = {'home':0, 'menu':1, 'map':0, 'extra':0}
     if request.method == 'GET':
         languages = [
             {'disp':'영어', 'val':'en'},
@@ -41,7 +44,7 @@ def menu():
 
 @app.route('/map')
 def map():
-    menu = {'home':0, 'menu':0, 'map':1}
+    menu = {'home':0, 'menu':0, 'map':1, 'extra':0}
     filename = os.path.join(app.static_folder, 'img/광주시_주요관공서.html')
     mtime = int(os.stat(filename).st_mtime)
     return render_template('map.html', menu=menu, mtime=mtime)
