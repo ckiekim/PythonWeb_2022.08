@@ -64,6 +64,19 @@ def video_feed():
     return Response(gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@extra_bp.route('/hand')
+def hand():
+    return render_template('extra/hand.html', menu=menu)
+
 @extra_bp.route('/face_mesh')
 def face_mesh():
     return render_template('extra/face_mesh.html', menu=menu)
+
+@extra_bp.route('/pose')
+def pose():
+    return render_template('extra/pose.html', menu=menu)
+
+@extra_bp.route('/holistic')
+def holistic():
+    return render_template('extra/holistic.html', menu=menu)
+
