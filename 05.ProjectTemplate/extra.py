@@ -1,6 +1,8 @@
-from flask import Blueprint, render_template, request, Response
-import cv2, time
+from flask import Blueprint, render_template, current_app, Response
+import os, cv2, time
 from datetime import datetime
+import mediapipe as mp
+import numpy as np
 
 extra_bp = Blueprint('extra_bp', __name__)
 menu = {'home':0, 'menu':0, 'map':0, 'extra':1}
@@ -14,7 +16,7 @@ def face_detect():
     params = {'title':'Image Streaming', 'time': time_string}
     return render_template('extra/face_detect.html', menu=menu, **params)
 
-def gen_frames():
+def face_gen_frames():
     camera = cv2.VideoCapture(0)
     width = camera.get(cv2.CAP_PROP_FRAME_WIDTH) 
     height = camera.get(cv2.CAP_PROP_FRAME_HEIGHT)   
@@ -57,10 +59,10 @@ def gen_frames():
     out.realease()
     cv2.destroyAllWindows()
  
-@extra_bp.route('/video_feed')
-def video_feed():
+@extra_bp.route('/face_video_feed')
+def face_video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen_frames(),
+    return Response(face_gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @extra_bp.route('/hand')
@@ -82,9 +84,6 @@ def holistic():
 @extra_bp.route('/rps')
 def rps():
     return render_template('extra/rps.html', menu=menu)
-
-import mediapipe as mp
-import numpy as np
 
 max_num_hands = 1
 gesture = {
@@ -168,7 +167,7 @@ def rps_gen_frames():
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-               
+
     camera.release()
     out.realease()
     cv2.destroyAllWindows()
