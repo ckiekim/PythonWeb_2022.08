@@ -27,6 +27,10 @@
                     href="{% if menu.menu %}#{% else %}/menu{% endif %}">
                     <i class="fa-solid fa-bolt"></i> 메뉴</a>
             <a class="nav-link disabled"></a>
+            <a class="nav-link {% if menu.iris %}active{% endif %}" 
+                    href="{% if menu.iris %}#{% else %}/iris{% endif %}">
+                    <i class="fa-solid fa-flower"></i> 아이리스</a>
+            <a class="nav-link disabled"></a>
             <a class="nav-link {% if menu.yolo %}active{% endif %}" 
                     href="{% if menu.yolo %}#{% else %}/yolo{% endif %}">
                     <i class="fa-solid fa-bolt"></i> 객체 검출</a>
