@@ -50,4 +50,5 @@ def map():
     return render_template('map.html', menu=menu, mtime=mtime)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)                    # 로컬에서의 접속만 가능
+    app.run(host='0.0.0.0', debug=True)     # 모든 호스트에서 접속 가능
